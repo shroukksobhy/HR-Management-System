@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,7 +15,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from './Custom/AuthProvider';
+import { AuthContext } from './Custom/AuthProvider';
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -39,12 +39,14 @@ function Login() {
     const [error, setError] = useState('');
     // const [isLoggedIn, setIsLoggedIn] = useAuth();
     const navigate = useNavigate();
-    const { login } = useAuth();
+    const { login } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("yess");
         //Login
+
         try {
             const response = await axios.post('http://localhost:5000/login', { username, password });
             console.log(response);
@@ -53,14 +55,20 @@ function Login() {
                 // Save the token in localStorage or context
                 let token = response.data.token;
                 let role = response.data.role;
+                let user = response.data.user;
+                let userString = JSON.stringify(user);
+                localStorage.setItem('user', userString);
                 localStorage.setItem('role', role);
                 localStorage.setItem('token', token);
+
                 navigate('/dashboard');
-                setError('');
+                // setError('');
             }
         } catch (error) {
             setError("Invalid username or password")
-            console.error('Login failed:', error.response.data.message);
+            // console.error('Login failed:', error.response.data.message);
+            console.error('Login failed:', error.response);
+
         }
     };
 
@@ -145,6 +153,4 @@ function Login() {
         </ThemeProvider>
     );
 }
-
-
 export default Login;

@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useState } from 'react';
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [user, setUser] = useState(null);
 
     // const login = () => setIsAuthenticated(false);
     const login = (callback) => {
@@ -13,10 +14,10 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => setIsAuthenticated(false);
     return (
-        <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, login, logout, setUser }}>
             {children}
         </AuthContext.Provider>
     );
 };
 
-export const useAuth = () => useContext(AuthContext);
+// export const useAuth = () => useContext(AuthContext);
