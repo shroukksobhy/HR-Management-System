@@ -9,7 +9,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const users = [
-    { username: 'a@a.com', password: '123' }
+    { username: 'a@a.com', password: '123', role: "manager" },
+    { username: 'b@b.com', password: '123', role: 'employee' }
+
 ];
 
 app.post('/login', (req, res) => {
