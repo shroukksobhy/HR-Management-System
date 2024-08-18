@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 // import './header.css';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -9,7 +9,10 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import './header.css';
 import { Link } from 'react-router-dom';
+import { AuthContext } from './Custom/AuthProvider';
 function Header() {
+    const { isAuthenticated, logout } = useContext(AuthContext);
+
     return (
         <div className='header'>
             <Box sx={{ flexGrow: 1 }}>
@@ -27,16 +30,31 @@ function Header() {
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             HR-Management Syatem
                         </Typography>
+                        {isAuthenticated ? (
+                            <div>
+                                <Button color="inherit" onClick={logout}>
+                                    Logout
+                                </Button>
+                            </div>
+                            // <button onClick={logout}>Logout</button>
+                        ) :
+                            <div>
+                                <Button color="inherit" component={Link} to="/login">
+                                    Manger Login
+                                </Button>
 
-                        {/* <Button color="inherit">Login</Button> */}
-                        {/* <Link to="/about">About</Link> */}
-                        <Button color="inherit" component={Link} to="/login">
+                                <Button color="inherit" component={Link} to="/register">
+                                    Register
+                                </Button>
+                            </div>
+
+                        }
+                        {/* <Button color="inherit" component={Link} to="/login">
                             Manger Login
                         </Button>
                         <Button color="inherit" component={Link} to="/register">
                             Register
-                        </Button>
-                        {/* <Button color="inherit">Register</Button> */}
+                        </Button> */}
 
                     </Toolbar>
                 </AppBar>

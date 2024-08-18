@@ -62,7 +62,7 @@ function Dashboard() {
             >
                 <Avatar src="/a" alt="Shrouk" />
                 <Box sx={{ ml: 2 }}>
-                    <Typography variant="subtitle2">HI user? {user.username}</Typography>
+                    <Typography variant="subtitle2">HI user? {user}</Typography>
 
                     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                         Manager
