@@ -38,7 +38,6 @@ const renderMenu = (
     </Stack>
 );
 const renderContent = (
-
     // { renderMenu }
     <div>
         {renderMenu}
@@ -46,8 +45,6 @@ const renderContent = (
 );
 function Dashboard() {
     const { user } = useContext(AuthContext);
-
-    console.log(user);
     return (
         <Container maxWidth="xl">
             {/* {renderContent} */}
@@ -65,7 +62,7 @@ function Dashboard() {
             >
                 <Avatar src="/a" alt="Shrouk" />
                 <Box sx={{ ml: 2 }}>
-                    <Typography variant="subtitle2">Shrouk</Typography>
+                    <Typography variant="subtitle2">HI user? {user.username}</Typography>
 
                     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                         Manager
@@ -87,7 +84,7 @@ function Dashboard() {
                 </Typography>
             </Box>
             <Grid container spacing={3}>
-                <Grid xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={3}>
                     <Card
                         component={Stack}
                         spacing={3}
@@ -110,7 +107,7 @@ function Dashboard() {
                     </Card>
                 </Grid>
 
-                <Grid xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={3}>
                     <Card
                         title="New Users"
                         total={1352831}
@@ -119,7 +116,7 @@ function Dashboard() {
                     />
                 </Grid>
 
-                <Grid xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={3}>
                     <Card
                         title="Item Orders"
                         total={1723315}
@@ -128,7 +125,7 @@ function Dashboard() {
                     />
                 </Grid>
 
-                <Grid xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={3}>
                     <Card
                         title="Bug Reports"
                         total={234}

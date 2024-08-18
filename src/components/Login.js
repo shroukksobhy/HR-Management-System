@@ -39,28 +39,26 @@ function Login() {
     const [error, setError] = useState('');
     // const [isLoggedIn, setIsLoggedIn] = useAuth();
     const navigate = useNavigate();
-    const { login } = useContext(AuthContext);
-    const { user, setUser } = useContext(AuthContext);
-
+    const { user, setUser, login } = useContext(AuthContext);
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("yess");
         //Login
-
         try {
             const response = await axios.post('http://localhost:5000/login', { username, password });
-            console.log(response);
-
             if (response.status === 200) {
                 // Save the token in localStorage or context
                 let token = response.data.token;
                 let role = response.data.role;
                 let user = response.data.user;
                 let userString = JSON.stringify(user);
+                console.log(user);
+                console.log(userString);
                 localStorage.setItem('user', userString);
                 localStorage.setItem('role', role);
                 localStorage.setItem('token', token);
-
+                login(userString);
+                // setUser(user);
                 navigate('/dashboard');
                 // setError('');
             }
@@ -68,6 +66,8 @@ function Login() {
             setError("Invalid username or password")
             // console.error('Login failed:', error.response.data.message);
             console.error('Login failed:', error.response);
+            console.error('Error details:', error);
+
 
         }
     };

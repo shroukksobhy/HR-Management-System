@@ -8,13 +8,16 @@ export const AuthProvider = ({ children }) => {
 
     // const login = () => setIsAuthenticated(false);
     const login = (callback) => {
+        console.log(callback);
         setIsAuthenticated(true);
-        if (callback) callback();
+        setUser(callback);
+        // userString ? setUser(userString) : setUser(null)
+        // if (callback) callback();
     };
 
     const logout = () => setIsAuthenticated(false);
     return (
-        <AuthContext.Provider value={{ isAuthenticated, login, logout, setUser }}>
+        <AuthContext.Provider value={{ isAuthenticated, login, logout, user, setUser }}>
             {children}
         </AuthContext.Provider>
     );

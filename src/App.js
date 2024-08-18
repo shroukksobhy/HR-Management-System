@@ -12,30 +12,29 @@ function App() {
   // const isAuthenticated = false; // Replace with your authentication logic
   const userRole = localStorage.getItem('role'); // Assuming role is stored in localStorage after login
   console.log(userRole);
-  let user = useContext(AuthContext)
-  console.log(user);
+
+  const { user } = useContext(AuthContext);
+  console.log(user)
   return (
     <div className="App">
-      <AuthProvider>
-        {/* <Router> */}
-        <Header />
-        <Routes />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/" element={<PrivateRoute />}>
-            {/* <Route path="/dashboard"  element={<Dashboard />} /> */}
-          </Route>
-          {/* <PrivateRoute path="/dashboard" element={<Dashboard />} /> */}
-          <Route
-            path="/dashboard"
-            element={userRole === 'manager' ? <Dashboard /> : <Navigate to="/employee" />}
-          />
-        </Routes>
+      {/* <Router> */}
+      <Header />
+      <Routes />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<SignUp />} />
+        <Route path="/" element={<PrivateRoute />}>
+          {/* <Route path="/dashboard"  element={<Dashboard />} /> */}
+        </Route>
+        {/* <PrivateRoute path="/dashboard" element={<Dashboard />} /> */}
+        <Route
+          path="/dashboard"
+          element={userRole === 'manager' ? <Dashboard /> : <Navigate to="/employee" />}
+        />
+      </Routes>
 
-        {/* </Router> */}
-      </AuthProvider>
-    </div>
+      {/* </Router> */}
+    </div >
   );
 }
 

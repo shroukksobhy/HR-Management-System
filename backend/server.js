@@ -22,7 +22,8 @@ app.post('/login', (req, res) => {
         res.status(200).json({
             message: 'Login successful',
             token: 'fake-jwt-token',
-            role: "manager"
+            role: user.role,
+            user: user
         });
     } else {
         res.status(401).json({ message: 'Invalid credentials' });

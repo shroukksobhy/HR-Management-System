@@ -5,16 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from './components/Custom/AuthProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Suspense>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </Suspense>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode >
 );
 
 // If you want to start measuring performance in your app, pass a function
