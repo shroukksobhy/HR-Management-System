@@ -9,8 +9,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const users = [
-    { username: 'a@a.com', password: '123', role: "manager" },
-    { username: 'b@b.com', password: '123', role: 'employee' }
+    { username: 'a@a.com', password: '123', name: "roka", role: "manager" },
+    { username: 'b@b.com', password: '123', name: "roka", role: 'employee' }
 
 ];
 

@@ -32,6 +32,9 @@ function Header() {
                         </Typography>
                         {isAuthenticated ? (
                             <div>
+                                <Button color="inherit" component={Link} to="/profile">
+                                    Profile
+                                </Button>
                                 <Button color="inherit" onClick={logout}>
                                     Logout
                                 </Button>
