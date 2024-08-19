@@ -10,6 +10,7 @@ import SignUp from './components/SignUp';
 import { AuthContext } from './components/Custom/AuthProvider';
 import Profile from './components/Profile';
 import './components/Profile.css';
+import EmployeePage from './components/EmployeePage';
 
 function App() {
   // const isAuthenticated = false; // Replace with your authentication logic
@@ -31,7 +32,8 @@ function App() {
           {/* <PrivateRoute path="/dashboard" element={<Dashboard />} /> */}
           <Route
             path="/dashboard"
-            element={userRole === 'manager' ? <Dashboard /> : <Navigate to="/employee" />}
+            element={userRole === 'manager' ? <Dashboard /> :
+              <EmployeePage />}
           />
           <Route
             path="profile"
