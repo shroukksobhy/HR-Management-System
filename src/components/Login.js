@@ -42,7 +42,6 @@ function Login() {
     const { user, setUser, login } = useContext(AuthContext);
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("yess");
         //Login
         try {
             const response = await axios.post('http://localhost:5000/login', { username, password });
@@ -57,7 +56,7 @@ function Login() {
                 localStorage.setItem('user', userString);
                 localStorage.setItem('role', role);
                 localStorage.setItem('token', token);
-                login(userString);
+                login(user);
                 // setUser(user);
                 navigate('/dashboard');
                 // setError('');

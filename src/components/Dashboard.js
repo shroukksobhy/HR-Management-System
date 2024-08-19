@@ -4,6 +4,25 @@ import { alpha } from '@mui/material/styles';
 import { Stack, ListItem, Scrollbar } from '@mui/material';
 // import { useAuth } from './Custom/AuthProvider';
 import { AuthContext } from './Custom/AuthProvider';
+import DynamicCard from './Custom/DynamicCard';
+const cardData = [
+    {
+        title: 'Employees',
+        description: 'This is the description for card 1.',
+        imageUrl: './employees.png'
+    },
+    {
+        title: 'Departments',
+        description: 'This is the description for card 2.',
+        imageUrl: './dep.png'
+    },
+    {
+        title: 'Departments',
+        description: 'This is the description for card 2.',
+        imageUrl: './dep.png'
+    }
+    // Add more card data as needed
+];
 const navConfig = [
     {
         title: 'dashboard',
@@ -47,6 +66,20 @@ function Dashboard() {
     const { user } = useContext(AuthContext);
     return (
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Box mb={2}>
+                <Grid container spacing={2}>
+                    {cardData.map((card, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <DynamicCard
+                                title={card.title}
+                                description={card.description}
+                                imageUrl={card.imageUrl}
+                            />
+                        </Grid>
+                    ))}
+                </Grid>
+            </Box>
+
             <Box
                 sx={{
                     py: 2,
@@ -80,7 +113,7 @@ function Dashboard() {
                     Good Moring,{user} 👋
                 </Typography>
             </Box>
-        </Container>
+        </Container >
 
     )
 }
