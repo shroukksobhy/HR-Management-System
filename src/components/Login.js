@@ -44,14 +44,14 @@ function Login() {
         e.preventDefault();
         //Login
         try {
-            const response = await axios.post('http://localhost:5000/login', { email, password });
+            const response = await axios.post('http://127.0.0.1:8000/api/login', { email, password });
             if (response.status === 200) {
                 // Save the token in localStorage or context
-                let token = response.data.token;
-                let role = response.data.role;
+                let token = response.data.access_token;
+                let role = response.data.user.role;
                 let user = response.data.user;
                 let userString = JSON.stringify(user);
-                console.log(user);
+                console.log(response);
                 console.log(userString);
                 localStorage.setItem('user', userString);
                 localStorage.setItem('role', role);

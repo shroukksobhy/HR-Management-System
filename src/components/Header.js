@@ -52,12 +52,12 @@ function Header() {
                         ) :
                             <div>
                                 <Button color="inherit" component={Link} to="/login">
-                                    Manger Login
+                                    Login
                                 </Button>
 
-                                <Button color="inherit" component={Link} to="/register">
+                                {/* <Button color="inherit" component={Link} to="/register">
                                     Register
-                                </Button>
+                                </Button> */}
                             </div>
 
                         }
