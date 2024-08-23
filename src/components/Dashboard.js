@@ -92,7 +92,7 @@ function Dashboard() {
             >
                 <Avatar src="/a" alt="Shrouk" />
                 <Box sx={{ ml: 2 }}>
-                    <Typography variant="subtitle2">HI user? {user}</Typography>
+                    <Typography variant="subtitle2">HI user? {user.username}</Typography>
 
                     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                         Manager
@@ -110,7 +110,7 @@ function Dashboard() {
 
             }}>
                 <Typography variant="h4" sx={{ mb: 5 }}>
-                    Good Moring,{user} 👋
+                    Good Moring,{user.username} 👋
                 </Typography>
             </Box>
         </Container >

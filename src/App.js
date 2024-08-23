@@ -11,7 +11,7 @@ import { AuthContext } from './components/Custom/AuthProvider';
 import Profile from './components/Profile';
 import './components/Profile.css';
 import EmployeePage from './components/EmployeePage';
-
+import NotFound from './components/NotFound';
 function App() {
   // const isAuthenticated = false; // Replace with your authentication logic
   const userRole = localStorage.getItem('role'); // Assuming role is stored in localStorage after login
@@ -40,6 +40,7 @@ function App() {
             element={<Profile />}
           />
         </Route>
+        <Route path="*" element={<NotFound />} />
 
       </Routes>
 

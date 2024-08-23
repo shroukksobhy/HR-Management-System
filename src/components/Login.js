@@ -34,7 +34,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 function Login() {
-    const [username, setUserName] = useState();
+    const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState('');
     // const [isLoggedIn, setIsLoggedIn] = useAuth();
@@ -44,7 +44,7 @@ function Login() {
         e.preventDefault();
         //Login
         try {
-            const response = await axios.post('http://localhost:5000/login', { username, password });
+            const response = await axios.post('http://localhost:5000/login', { email, password });
             if (response.status === 200) {
                 // Save the token in localStorage or context
                 let token = response.data.token;
@@ -62,7 +62,7 @@ function Login() {
                 // setError('');
             }
         } catch (error) {
-            setError("Invalid username or password")
+            setError("Invalid email or password")
             // console.error('Login failed:', error.response.data.message);
             console.error('Login failed:', error.response);
             console.error('Error details:', error);
@@ -94,12 +94,12 @@ function Login() {
                             margin="normal"
                             required
                             fullWidth
-                            id="username"
+                            id="email"
                             label="Email Address"
-                            name="username"
-                            autoComplete="username"
+                            name="email"
+                            autoComplete="email"
                             autoFocus
-                            onChange={e => setUserName(e.target.value)}
+                            onChange={e => setEmail(e.target.value)}
                             error={!!error}
 
                         />

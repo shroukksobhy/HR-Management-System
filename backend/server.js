@@ -9,14 +9,14 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const users = [
-    { username: 'a@a.com', password: '123', name: "roka", role: "manager" },
-    { username: 'b@b.com', password: '123', name: "roka", role: 'employee' }
+    { email: 'a@a.com', password: '123', username: "Eng Roka", role: "manager" },
+    { email: 'b@b.com', password: '123', username: "Roka", role: 'employee' }
 
 ];
 
 app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    const user = users.find(u => u.username === username && u.password === password);
+    const { email, password } = req.body;
+    const user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
         res.status(200).json({

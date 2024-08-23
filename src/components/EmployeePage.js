@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Box, Typography, Avatar, Container, Grid, Card } from '@mui/material';
 import DynamicCard from './Custom/DynamicCard';
+import { AuthContext } from './Custom/AuthProvider';
 function EmployeePage() {
+    const { user } = useContext(AuthContext);
+
     const cardData = [
         {
-            title: 'Shrouk',
+            title: user.username,
             description: 'Software Engineer',
         },
         {
@@ -46,7 +49,7 @@ function EmployeePage() {
                     padding: 2,
                     borderRadius: 2,
                 }}>
-                    Hi
+                    Hi {user.username}
                 </Box>
             </Container>
         </div>

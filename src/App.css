@@ -5,7 +5,7 @@ GEneral
 
 :root {
   scroll-behavior: smooth;
-  --primary: #4154f1;
+  /* --primary: #4154f1; */
   --second: #717ff5;
   --bgColor: #f6f9ff;
 }
