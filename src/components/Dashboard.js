@@ -9,17 +9,22 @@ const cardData = [
     {
         title: 'Employees',
         description: 'This is the description for card 1.',
-        imageUrl: './employees.png'
+        imageUrl: './employees.png',
+        path: '/employees'
     },
     {
         title: 'Departments',
         description: 'This is the description for card 2.',
-        imageUrl: './dep.png'
+        imageUrl: './dep.png',
+        path: '/departments'
+
     },
     {
         title: 'Departments',
         description: 'This is the description for card 2.',
-        imageUrl: './dep.png'
+        imageUrl: './dep.png',
+        path: '/departments'
+
     }
     // Add more card data as needed
 ];
@@ -74,6 +79,7 @@ function Dashboard() {
                                 title={card.title}
                                 description={card.description}
                                 imageUrl={card.imageUrl}
+                                path={card.path}
                             />
                         </Grid>
                     ))}
