@@ -45,7 +45,7 @@ function EmployeePage() {
                 <Box sx={{
                     height: 200,
                     backgroundColor: 'white',
-                    boxShadow: 3, // You can change this value from 0 to 24
+                    boxShadow: 3,
                     padding: 2,
                     borderRadius: 2,
                 }}>

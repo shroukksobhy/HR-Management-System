@@ -13,6 +13,7 @@ import './components/Profile.css';
 import EmployeePage from './components/EmployeePage';
 import NotFound from './components/NotFound';
 import Employees from './components/Employees/Employees';
+import AddEmployee from './components/Employees/AddEmployee';
 function App() {
   // const isAuthenticated = false; // Replace with your authentication logic
   const userRole = localStorage.getItem('role'); // Assuming role is stored in localStorage after login
@@ -41,6 +42,7 @@ function App() {
             element={<Profile />}
           />
           <Route path="/employees" element={<Employees />} />
+          <Route path="/add-employee" element={<AddEmployee />} />
 
         </Route>
         <Route path="*" element={<NotFound />} />

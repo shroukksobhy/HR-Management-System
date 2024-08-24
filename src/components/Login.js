@@ -66,8 +66,6 @@ function Login() {
             // console.error('Login failed:', error.response.data.message);
             console.error('Login failed:', error.response);
             console.error('Error details:', error);
-
-
         }
     };
 

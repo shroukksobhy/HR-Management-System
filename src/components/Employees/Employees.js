@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Container, Box } from '@mui/material';
 import AddEmployee from './AddEmployee';
 // import EditItem from './EditItem';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Employees = () => {
     const [items, setItems] = useState([]);
@@ -18,13 +19,16 @@ const Employees = () => {
     };
 
     // const handleDelete = async (id) => {
-    //     await axios.delete(`/api/items/${id}`);
+    //     await axios.delete(`/api/items/${id}r`);
     //     fetchItems();
     // };
 
     return (
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Box mb={2}>
+            <Box mb={2} sx={{
+                boxShadow: 3,
+                borderRadius: 2,
+            }}>
 
                 <TableContainer component={Paper}>
                     <Table>
@@ -48,7 +52,15 @@ const Employees = () => {
                             ))}
                         </TableBody>
                     </Table>
-                    <AddEmployee />
+                    {/* <AddEmployee /> */}
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        component={RouterLink}
+                        to="/add-employee"
+                    >
+                        Add Employee
+                    </Button>
                     {/* <AddEmployee fetchItems={fetchItems} /> */}
 
                     {/* {editingItem && <EditItem item={editingItem} fetchItems={fetchItems} setEditingItem={setEditingItem} />} */}
