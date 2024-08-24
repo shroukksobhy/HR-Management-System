@@ -3,6 +3,7 @@ import axios from 'axios';
 import { TextField, FormControl, InputLabel, Button, Container, Stack, Box, Typography } from '@mui/material';
 import { Link } from "react-router-dom";
 import { Select, MenuItem } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const AddEmployee = ({ fetchItems }) => {
     const [firstName, setFirstName] = useState('')
@@ -14,6 +15,8 @@ const AddEmployee = ({ fetchItems }) => {
     const [gender, setGender] = useState('')
     const [phone, setPhone] = useState('')
     const [role, setRole] = useState('')
+    const [error, setError] = useState('')
+    const navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -22,7 +25,25 @@ const AddEmployee = ({ fetchItems }) => {
             email, dateOfBirth,
             password, position,
             gender, phone,
-            role)
+            role);
+        let name = firstName + ' ' + lastName
+        try {
+            const response = axios.post('http://127.0.0.1:8000/api/employees',
+                {
+                    name, email,
+                    role, dateOfBirth,
+                    password, position,
+                    gender, phone
+
+                }
+            );
+            console.log(response);
+            navigate('/employees');
+
+        } catch (error) {
+            setError(error)
+            console.error('Error details:', error);
+        }
     }
     return (
         <>
@@ -74,6 +95,19 @@ const AddEmployee = ({ fetchItems }) => {
                             required
                             sx={{ mb: 4 }}
                         />
+                        <Typography pb={2}>Employee Phone: </Typography>
+                        <TextField
+                            type="number"
+                            variant='outlined'
+                            color='secondary'
+                            label="Phone"
+                            name="phone"
+                            onChange={e => setPhone(e.target.value)}
+                            value={phone}
+                            fullWidth
+                            required
+                            sx={{ mb: 4 }}
+                        />
                         <Typography pb={2}>Employee Role: </Typography>
                         <Select
                             labelId="role-select-label"
@@ -101,7 +135,6 @@ const AddEmployee = ({ fetchItems }) => {
                             required
                             sx={{ mb: 4 }}
                             onChange={e => setGender(e.target.value)}
-
                         >
                             <MenuItem value="male">Male</MenuItem>
                             <MenuItem value="female">Female</MenuItem>
