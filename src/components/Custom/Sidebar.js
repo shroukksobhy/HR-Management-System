@@ -38,6 +38,9 @@ function Sidebar() {
                 <ListItem component={Link} to="/payrolls">
                     <ListItemText primary="Payrolls" />
                 </ListItem>
+                <ListItem component={Link} to="/settings">
+                    <ListItemText primary="Settings" />
+                </ListItem>
             </List>
         </div>
     );
